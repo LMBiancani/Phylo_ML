@@ -5,6 +5,8 @@
 #SBATCH --ntasks-per-node=1   # processor core(s) per node
 #SBATCH -c 1
 #SBATCH --mem-per-cpu=6G
+#SBATCH --mail-user="biancani@uri.edu" #CHANGE TO user email address
+#SBATCH --mail-type=ALL
 
 OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
 aligned_loci_path=/data/schwartzlab/Biancani/PlacentalPolytomy/output/01_SISRS_loci_filtered

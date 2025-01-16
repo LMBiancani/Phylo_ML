@@ -23,3 +23,54 @@ On Github:
 - Delete the forked repository
 
 Move all of Alexandra's files into a new directory name PML.
+Create README.md and Save this notes file.
+
+-----
+Starting with Alexandra's Step 6:
+6. Empirical Feature Assessment
+
+Now we are ready to assess features from empirical datasets. Navigate to 6_empirical_features and run the following
+
+sbatch 0_data_prep.sh - specific to McGowen_alignments (skip)
+sbatch 1_run_prep.sh
+sbatch 2_run_mafft.sh
+-----
+Location of filtered SISRS loci:
+/data/schwartzlab/Biancani/PlacentalPolytomy/output/01_SISRS_loci_filtered
+
+mkdir 01_feature_assessment
+
+nano 01.00_prep.sh
+#####################
+#!/bin/bash
+#SBATCH --job-name="prep"
+#SBATCH --time=1:00:00  # walltime limit (HH:MM:SS)
+#SBATCH --nodes=1   # number of nodes
+#SBATCH --ntasks-per-node=1   # processor core(s) per node
+#SBATCH -c 1
+#SBATCH --mem-per-cpu=6G
+
+OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+aligned_loci_path=/data/schwartzlab/Biancani/PlacentalPolytomy/output/01_SISRS_loci_filtered
+
+date
+mkdir -p $OUTPUT
+cd $OUTPUT
+pwd
+
+mkdir alignmentGroups
+cd alignmentGroups
+ls ${aligned_loci_path} | rev | cut -f1 -d/ | rev | split -l 250 - aligned_loci_list_
+ls aligned_loci_list_* > array_list.txt
+cd ..
+
+mkdir alignments3
+mkdir iqtree_genetrees2
+mkdir iqtree_genetrees3
+mkdir phylomad_assessment
+mkdir rate_assessment
+mkdir iqtree_concattree
+mkdir astral_tree
+
+date
+#####################

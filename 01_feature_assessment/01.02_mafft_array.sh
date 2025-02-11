@@ -8,14 +8,14 @@
 #SBATCH --mail-type=ALL
 #SBATCH --array=[0-19]%20
 
-OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+out=/data/schwartzlab/Biancani/Phylo_ML/output
 
 date
 module purge
 module load MAFFT/7.475-gompi-2020b-with-extensions
 
 subset=$(printf "%02d\n" $((SLURM_ARRAY_TASK_ID + 1)))
-path=$OUTPUT/subset_$subset
+path=$out/subset_$subset
 cd $path
 pwd
 for alignment in alignments/*; do

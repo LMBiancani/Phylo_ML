@@ -9,17 +9,17 @@
 #SBATCH --mail-type=ALL
 
 # Update Paths:
-OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+out=/data/schwartzlab/Biancani/Phylo_ML/output
 aligned_loci_path=/data/schwartzlab/Biancani/PlacentalPolytomy/output/01_SISRS_loci_filtered
 subset_size=5500  # Number of alignment per subset
 
-# Create output directory and alignments sub-directory:
-mkdir -p $OUTPUT
-cd $OUTPUT
+# Create output directory:
+mkdir -p $out
+cd $out
 date
 pwd
 
-# Create destination directories and subset files
+# Create destination alignment sub-directories and subset files
 counter=0 #initiate counter to track processed files
 for file in $aligned_loci_path/*; do ##iterate over each file in aligned_loci_path
   dir_num=$(printf "%02d" $((counter / $subset_size + 1))) #calculate the subdirectory number starting with "01"

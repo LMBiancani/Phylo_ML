@@ -9,7 +9,7 @@
 #SBATCH --array=[0-19]%20
 
 # Update Path:
-OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+out=/data/schwartzlab/Biancani/Phylo_ML/output
 iqtree_exe=/data/schwartzlab/Biancani/Software/iqtree-2.1.2-Linux/bin/iqtree2
 amas=/data/schwartzlab/Biancani/Software/AMAS/amas/AMAS.py
 
@@ -17,7 +17,7 @@ date
 module purge
 module load Python/3.7.4-GCCcore-8.3.0
 subset=$(printf "%02d\n" $((SLURM_ARRAY_TASK_ID + 1)))
-path=$OUTPUT/subset_$subset
+path=$out/subset_$subset
 cd $path
 pwd
 

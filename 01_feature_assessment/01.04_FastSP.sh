@@ -7,14 +7,14 @@
 #SBATCH --mail-type=ALL
 
 # Update Path:
-OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+out=/data/schwartzlab/Biancani/Phylo_ML/output
 fastsp="/data/schwartzlab/Biancani/Software/FastSP/FastSP.jar"
 
 date
 module purge
 module load all/Java/17.0.2
 
-for subset in $OUTPUT/subset_*; do
+for subset in $out/subset_*; do
   cd $subset
   pwd
   > fastsp_output.csv

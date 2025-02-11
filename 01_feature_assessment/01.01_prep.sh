@@ -8,10 +8,10 @@
 #SBATCH --mail-user="biancani@uri.edu" #CHANGE TO user email address
 #SBATCH --mail-type=ALL
 
-OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+out=/data/schwartzlab/Biancani/Phylo_ML/output
 
 date
-for subset in $OUTPUT/subset_*;
+for subset in $out/subset_*;
 do
   cd $subset
   pwd
@@ -23,8 +23,7 @@ do
   ls aligned_loci_list_* > array_list.txt
   cd ..
   mkdir re_alignments
-  mkdir iqtree_genetrees2
-  mkdir iqtree_genetrees3
+  mkdir iqtree_genetrees
   mkdir phylomad_assessment
   mkdir rate_assessment
   mkdir iqtree_concattree

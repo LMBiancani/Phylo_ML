@@ -7,20 +7,20 @@
 #SBATCH --mail-user="biancani@uri.edu" #CHANGE TO user email address
 #SBATCH --mail-type=ALL
 
-OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+out=/data/schwartzlab/Biancani/Phylo_ML/output
 amas=/data/schwartzlab/Biancani/Software/AMAS/amas/AMAS.py
 iqtree_exe=/data/schwartzlab/Biancani/Software/iqtree-2.1.2-Linux/bin/iqtree2
 
 date
 module purge
 module load Python/3.7.4-GCCcore-8.3.0
-cat_subsets=$OUTPUT/all_loci/concatenated_subsets
+cat_subsets=$out/all_loci/concatenated_subsets
 mkdir -p $cat_subsets
 cd $cat_subsets
 pwd
 
 ##for each subset, copy concatenated alignments and partition files to all_loci:
-for subset in $OUTPUT/subset_*; do
+for subset in $out/subset_*; do
   name=$(basename $subset)
   cp $subset/iqtree_concattree/concatenated.fasta $cat_subsets/${name}_concat.fasta
   cp $subset/iqtree_concattree/partitions.txt $cat_subsets/${name}_partition.txt

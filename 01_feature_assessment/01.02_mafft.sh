@@ -7,13 +7,13 @@
 #SBATCH --mail-user="biancani@uri.edu" #CHANGE TO user email address
 #SBATCH --mail-type=ALL
 
-OUTPUT=/data/schwartzlab/Biancani/Phylo_ML/output
+out=/data/schwartzlab/Biancani/Phylo_ML/output
 
 date
 module purge
 module load MAFFT/7.475-gompi-2020b-with-extensions
 
-for subset in $OUTPUT/subset_*; do
+for subset in $out/subset_*; do
   cd $subset
   pwd
   for alignment in alignments/*; do

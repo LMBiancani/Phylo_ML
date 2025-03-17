@@ -1,2 +1,4 @@
 slurm*
 output/
+.Rproj.user
+.DS*
